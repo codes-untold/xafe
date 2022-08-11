@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xafe/constants/app_constants.dart';
+import 'package:xafe/views/widgets/custom_button.dart';
 import 'package:xafe/views/widgets/custom_text.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -34,16 +35,9 @@ class SplashScreen extends StatelessWidget {
             Flexible(
                 child: Column(
                   children: [
-                    Container(
-                      padding: const EdgeInsets.all(16),
-                      width: double.infinity,
-                      child: Center(
-                          child: CustomText.bold("Login",
-                              color: appWhite, fontSize: 12)),
-                      decoration: BoxDecoration(
-                          color: appBlue,
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
+                    CustomButton(
+                        CustomText.bold("Login", fontSize: 12, color: appWhite),
+                        () {}),
                     const SizedBox(
                       height: 15,
                     ),
