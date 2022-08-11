@@ -9,6 +9,7 @@ const Color appWhite = Color(0xffffffff);
 const Color appBlue = Color(0xff0047ff);
 const Color appGrey = Color(0xff9a96a4);
 const Color offWhite = Color(0xfff8f8f9);
+const Color textGrey = Color(0xff757886);
 
 final allProviders = <SingleChildWidget>[
   ChangeNotifierProvider(create: (_) => AuthViewModel()),
