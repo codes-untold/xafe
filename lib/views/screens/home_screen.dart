@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:xafe/constants/app_constants.dart';
+import 'package:xafe/views/widgets/bottom_sheet.dart';
 import 'package:xafe/views/widgets/custom_text.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -37,12 +38,20 @@ class HomeScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          const CircleAvatar(
-                            radius: 20,
-                            backgroundColor: appWhite,
-                            child: Icon(
-                              Icons.edit_outlined,
-                              color: appBlue,
+                          GestureDetector(
+                            onTap: () {
+                              showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  context: context,
+                                  builder: (context) => CustomBottomSheet());
+                            },
+                            child: const CircleAvatar(
+                              radius: 20,
+                              backgroundColor: appWhite,
+                              child: Icon(
+                                Icons.edit_outlined,
+                                color: appBlue,
+                              ),
                             ),
                           ),
                         ],
