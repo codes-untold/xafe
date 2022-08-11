@@ -19,6 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Consumer<AuthViewModel>(builder: ((context, authViewModel, _) {
       return Scaffold(
+        backgroundColor: appWhite,
         body: SafeArea(
             child: Padding(
           padding: const EdgeInsets.all(16.0),
