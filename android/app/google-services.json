@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "479100570191",
+    "project_id": "xafe-4948f",
+    "storage_bucket": "xafe-4948f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:479100570191:android:6422e096f9e9509e79783a",
+        "android_client_info": {
+          "package_name": "com.example.xafe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "479100570191-r1vs2epuosnohiled0m9l1jc29eqruue.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo1Osz-thudtin94eMa2uNxymp-rPkPEU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "479100570191-r1vs2epuosnohiled0m9l1jc29eqruue.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
