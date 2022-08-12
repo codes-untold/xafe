@@ -2,13 +2,15 @@ class SignupContentModel {
   String mainText;
   String subText;
   String buttonText;
+  Enum signUpSequenceValue;
   bool hasPasswordToggleButton;
-  double progressBarNumber;
+  int progressBarNumber;
 
   SignupContentModel({
     required this.mainText,
     required this.subText,
     required this.progressBarNumber,
+    required this.signUpSequenceValue,
     this.buttonText = "Next",
     this.hasPasswordToggleButton = false,
   });

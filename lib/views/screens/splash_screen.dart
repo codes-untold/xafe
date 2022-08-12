@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:xafe/constants/app_constants.dart';
+import 'package:xafe/views/screens/sign_in.dart';
+import 'package:xafe/views/screens/sign_up.dart';
 import 'package:xafe/views/widgets/custom_button.dart';
 import 'package:xafe/views/widgets/custom_text.dart';
 
@@ -37,7 +39,12 @@ class SplashScreen extends StatelessWidget {
                   children: [
                     CustomButton(
                         CustomText.bold("Login", fontSize: 12, color: appWhite),
-                        () {}),
+                        () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: ((context) => const SignInScreen())));
+                    }),
                     const SizedBox(
                       height: 15,
                     ),
@@ -48,7 +55,16 @@ class SplashScreen extends StatelessWidget {
                         const SizedBox(
                           width: 5,
                         ),
-                        CustomText.medium("Create an account", color: appWhite)
+                        GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: ((context) =>
+                                          const SignUpScreen())));
+                            },
+                            child: CustomText.medium("Create an account",
+                                color: appWhite))
                       ],
                     ),
                     Flexible(
