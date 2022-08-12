@@ -7,16 +7,22 @@ class CustomTextField extends StatelessWidget {
       {Key? key,
       required this.hintText,
       this.suffixIcon,
+      this.controller,
+      this.validator,
       this.isFieldObsured = false})
       : super(key: key);
 
   final String hintText;
   final Widget? suffixIcon;
   final bool isFieldObsured;
+  final TextEditingController? controller;
+  final FormFieldValidator<String>? validator;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
+      validator: validator,
       obscureText: isFieldObsured,
       decoration: InputDecoration(
           border: OutlineInputBorder(
