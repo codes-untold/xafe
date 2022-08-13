@@ -8,4 +8,8 @@ class Service {
       return true;
     }
   }
+
+  static String dateFormater(String value) {
+    return value.substring(0, 11);
+  }
 }

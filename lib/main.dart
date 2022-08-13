@@ -19,7 +19,7 @@ void main() async {
   runApp(MultiProvider(
     providers: allProviders,
     child: const MaterialApp(
-      home: SplashScreen(),
+      home: NavigationScreen(),
       onGenerateRoute: AppRouter.generateRoute,
     ),
   ));

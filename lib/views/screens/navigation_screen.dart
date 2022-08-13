@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:xafe/constants/app_constants.dart';
+import 'package:xafe/viewmodels/transaction_view_model.dart';
+import 'package:xafe/views/screens/category_screen.dart';
 import 'package:xafe/views/screens/home_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
@@ -11,7 +14,11 @@ class NavigationScreen extends StatefulWidget {
 
 class _NavigationScreenState extends State<NavigationScreen> {
   int selectedIndex = 0;
-  List<Widget> screens = [const HomeScreen(), Container(), Container()];
+  List<Widget> screens = [
+    const HomeScreen(),
+    const CategoryScreen(),
+    Container()
+  ];
 
   void onItemTapped(int index) {
     if (index == 2) {
@@ -19,6 +26,16 @@ class _NavigationScreenState extends State<NavigationScreen> {
     }
     setState(() {
       selectedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    TransactionViewModel transactionViewModel =
+        Provider.of(context, listen: false);
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      transactionViewModel.fetchCatgeoriesExpenses();
     });
   }
 
