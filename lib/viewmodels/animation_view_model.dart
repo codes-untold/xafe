@@ -21,8 +21,6 @@ class AnimationViewModel extends ChangeNotifier {
         incomeText += 30;
         expenseBarHeight += 0.0002;
         incomeBarHeight += 0.0004;
-        print(expenseText);
-
         notifyListeners();
       },
     );

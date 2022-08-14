@@ -39,7 +39,7 @@ class CustomTextField extends StatelessWidget {
           hintStyle: const TextStyle(fontSize: 14),
           filled: true,
           contentPadding:
-              const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+              const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
           fillColor: offWhite,
           hintText: hintText,
           isDense: true,

@@ -1,4 +1,4 @@
-import '../models/expense_model.dart';
+import 'dart:io';
 
 class Service {
   static bool validateEmail(String value) {
@@ -30,5 +30,17 @@ class Service {
       }
     }
     return priceInText.trim();
+  }
+
+  static Future<bool> internetCheck() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {
+        return true;
+      }
+    } on SocketException catch (_) {
+      return false;
+    }
+    return false;
   }
 }
