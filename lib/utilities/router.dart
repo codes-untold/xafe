@@ -2,15 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:xafe/views/screens/add_expense.dart';
-import 'package:xafe/views/screens/category_screen.dart';
 import 'package:xafe/views/screens/create_category.dart';
-import 'package:xafe/views/screens/expense_history.dart';
 import 'package:xafe/views/screens/navigation_screen.dart';
 import 'package:xafe/views/screens/sign_up.dart';
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    var args = settings.arguments;
     switch (settings.name) {
       case "/sign_up":
         return MaterialPageRoute(builder: (_) => const SignUpScreen());

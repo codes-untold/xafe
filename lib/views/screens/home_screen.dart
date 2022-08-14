@@ -109,6 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           CustomText.extraBold(
                                               "\$${Service.textFormatter(animationViewModel.expenseText.toString())}.00",
                                               color: appWhite,
+                                              key: const Key("expenseTextId"),
                                               fontSize: 20)
                                         ],
                                       ),
