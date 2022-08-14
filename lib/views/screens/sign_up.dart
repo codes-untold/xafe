@@ -216,7 +216,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         return;
                       }
                       //only returns false on cases of invalid OTP
-                      showToastAlert(context, "invalid OTP", isSuccess: false);
+                      if (authViewModel.contentIndex == 2) {
+                        showToastAlert(context, "invalid OTP",
+                            isSuccess: false);
+                      }
                     }
                   });
                 }
