@@ -98,7 +98,7 @@ class _AddExpenseState extends State<AddExpense> {
                                                 Padding(
                                                   padding:
                                                       const EdgeInsets.only(
-                                                          bottom: 8),
+                                                          bottom: 16),
                                                   child: GestureDetector(
                                                     onTap: () {
                                                       setState(() {
@@ -115,10 +115,16 @@ class _AddExpenseState extends State<AddExpense> {
                                                       });
                                                       Navigator.pop(context);
                                                     },
-                                                    child: CustomText.regular(
-                                                        transactionViewModel
-                                                            .categoryList[index]
-                                                            .name),
+                                                    child: Column(
+                                                      children: [
+                                                        CustomText.regular(
+                                                            transactionViewModel
+                                                                .categoryList[
+                                                                    index]
+                                                                .name),
+                                                        const Divider()
+                                                      ],
+                                                    ),
                                                   ),
                                                 )),
                                             itemCount: transactionViewModel

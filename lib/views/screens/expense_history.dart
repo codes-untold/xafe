@@ -36,14 +36,15 @@ class _ExpenseHistoryState extends State<ExpenseHistory> {
     return Consumer<TransactionViewModel>(
       builder: ((context, transactionViewModel, child) {
         print("cghgh");
-        print(transactionViewModel.categoryList.length);
+        print(transactionViewModel
+            .categoryList[widget.itemIndex].expenseList.length);
         return Scaffold(
             backgroundColor: appBlue,
             body: SafeArea(
                 child: Column(
               children: [
                 Flexible(
-                  flex: 3,
+                  flex: 4,
                   child: Container(
                     padding: const EdgeInsets.all(16),
                     child: Column(

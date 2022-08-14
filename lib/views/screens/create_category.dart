@@ -44,9 +44,14 @@ class _CreateCategoryState extends State<CreateCategory> {
                       const SizedBox(
                         height: 20,
                       ),
-                      const Icon(
-                        Icons.arrow_back_ios,
-                        color: appBlack,
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Icon(
+                          Icons.arrow_back_ios,
+                          color: appBlack,
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -112,9 +117,12 @@ class _CreateCategoryState extends State<CreateCategory> {
                           child: Row(
                             children: [
                               selectedImageId != null
-                                  ? Image.asset(
-                                      "assets/images/category_img$selectedImageId.png",
-                                      width: 15,
+                                  ? Padding(
+                                      padding: const EdgeInsets.only(right: 8),
+                                      child: Image.asset(
+                                        "assets/images/category_img$selectedImageId.png",
+                                        width: 15,
+                                      ),
                                     )
                                   : const SizedBox.shrink(),
                               const Expanded(
@@ -125,14 +133,36 @@ class _CreateCategoryState extends State<CreateCategory> {
                   ),
                 ),
                 CustomButton(
-                    CustomText.bold("Create Category",
-                        color: appWhite, fontSize: 14), () {
+                    Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        CustomText.bold("Create Category",
+                            color: appWhite, fontSize: 14),
+                        transactionViewModel.isScreenBusy
+                            ? Padding(
+                                padding: const EdgeInsets.only(left: 10),
+                                child: ConstrainedBox(
+                                  constraints: const BoxConstraints.tightFor(
+                                      width: 15, height: 15),
+                                  child: const CircularProgressIndicator(
+                                    color: appWhite,
+                                  ),
+                                ),
+                              )
+                            : const SizedBox.shrink()
+                      ],
+                    ), () {
                   if (_formkey.currentState!.validate()) {
                     if (selectedImageId == null) {
                       showToastAlert(context, "Select Category Image",
                           isSuccess: false);
                       return;
                     }
+                    transactionViewModel
+                        .createCategory(nameController.text, selectedImageId!)
+                        .then((value) {
+                      Navigator.pop(context);
+                    });
                   }
                 })
               ],

@@ -1,6 +1,6 @@
 class ExpenseModel {
   String name;
-  dynamic amount;
+  int amount;
   String date;
 
   ExpenseModel(this.name, this.amount, this.date);

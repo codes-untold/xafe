@@ -23,7 +23,7 @@ class ListBottomSheet extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12)),
           ),
           const SizedBox(
-            height: 20,
+            height: 30,
           ),
           widget
         ],
