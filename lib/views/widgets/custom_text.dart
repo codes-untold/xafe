@@ -201,6 +201,7 @@ class CustomText {
 
   static Text extraBold(
     String text, {
+    Key? key,
     double? fontSize,
     String? fontFamily,
     Color? color,
