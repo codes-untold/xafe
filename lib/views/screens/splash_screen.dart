@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:xafe/constants/app_constants.dart';
+import 'package:xafe/utilities/shared_preferences.dart';
 import 'package:xafe/views/screens/sign_in.dart';
 import 'package:xafe/views/screens/sign_up.dart';
 import 'package:xafe/views/widgets/custom_button.dart';
 import 'package:xafe/views/widgets/custom_text.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

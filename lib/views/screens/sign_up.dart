@@ -6,6 +6,7 @@ import 'package:xafe/models/sign_up_sequence.dart';
 import 'package:xafe/utilities/services.dart';
 import 'package:xafe/utilities/toast.dart';
 import 'package:xafe/viewmodels/auth_view_model.dart';
+import 'package:xafe/viewmodels/transaction_view_model.dart';
 import 'package:xafe/views/widgets/custom_button.dart';
 import 'package:xafe/views/widgets/custom_text.dart';
 
@@ -23,7 +24,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer<AuthViewModel>(builder: ((context, authViewModel, _) {
+    return Consumer2<AuthViewModel, TransactionViewModel>(
+        builder: ((context, authViewModel, transactionViewModel, _) {
       return Scaffold(
         backgroundColor: appWhite,
         body: SafeArea(
@@ -177,7 +179,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               .buttonText,
                           fontSize: 15,
                           color: appWhite),
-                      authViewModel.isScreenBusy
+                      authViewModel.isScreenBusy ||
+                              transactionViewModel.isScreenBusy
                           ? Padding(
                               padding: const EdgeInsets.only(left: 10),
                               child: ConstrainedBox(
@@ -194,12 +197,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 if (_formkey.currentState!.validate()) {
                   authViewModel
                       .navigateSignUpScreens(controller.text)
-                      .then((value) {
+                      .then((value) async {
                     if (value) {
                       if (authViewModel.contentIndex == 3) {
                         Navigator.of(context).pushNamedAndRemoveUntil(
                             "/navigation_screen",
                             (Route<dynamic> route) => false);
+
                         return;
                       }
                       authViewModel.moveToNext();
@@ -234,6 +238,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   String? validateFields(Enum signUpSequence, String text) {
     switch (signUpSequence) {
+      case SignUpSequence.userName:
+        if (text.split(" ").length < 2) {
+          return "Input First Name & Last Name";
+        } else {
+          return null;
+        }
       case SignUpSequence.userEmail:
         if (Service.validateEmail(text)) {
           return null;

@@ -23,9 +23,14 @@ class CustomBottomSheet extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12)),
           ),
           const SizedBox(
-            height: 20,
+            height: 30,
           ),
-          customRow("add_expense", "Add an Expense"),
+          GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.pushNamed(context, "/add_expense_screen");
+              },
+              child: customRow("add_expense", "Add an Expense")),
           const SizedBox(
             height: 10,
           ),

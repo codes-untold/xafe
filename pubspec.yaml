@@ -39,6 +39,9 @@ dependencies:
   firebase_core: ^1.20.1
   email_auth: ^1.0.0
   firebase_auth:
+  cloud_firestore: ^3.4.4
+  shared_preferences: ^2.0.15
+  flutter_spinkit: ^5.1.0
 
 dev_dependencies:
   flutter_test:

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
+import 'package:xafe/viewmodels/animation_view_model.dart';
 
 import '../viewmodels/auth_view_model.dart';
+import '../viewmodels/transaction_view_model.dart';
 
 const Color appBlack = Color(0xff0f0627);
 const Color appWhite = Color(0xffffffff);
@@ -14,4 +16,7 @@ const Color altGrey = Color(0xff757866);
 const Color appGold = Color(0xffff8514);
 final allProviders = <SingleChildWidget>[
   ChangeNotifierProvider(create: (_) => AuthViewModel()),
+  ChangeNotifierProvider(create: (_) => TransactionViewModel()),
+  ChangeNotifierProvider(create: (_) => AnimationViewModel()),
 ];
+const userIdKey = "userIdKey";

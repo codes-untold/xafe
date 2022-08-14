@@ -1,12 +1,15 @@
 import 'package:email_auth/email_auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:xafe/constants/app_constants.dart';
 import 'package:xafe/models/sign_up_sequence.dart';
+import 'package:xafe/utilities/shared_preferences.dart';
 
 import '../models/signup_content_model.dart';
 
 class AuthViewModel extends ChangeNotifier {
   final _auth = FirebaseAuth.instance;
+  String? userId;
 
   List<SignupContentModel> signUpContent = [
     SignupContentModel(
@@ -64,12 +67,17 @@ class AuthViewModel extends ChangeNotifier {
     isScreenBusy = true;
     notifyListeners();
     try {
-      UserCredential newUser = await _auth.createUserWithEmailAndPassword(
+      await _auth.createUserWithEmailAndPassword(
           email: userEmail, password: inputedText);
+      setUserId(_auth.currentUser!.uid); //set currentUserId
+
+      SharedPreferencesUtil.setString(userIdKey, userId!);
       isScreenBusy = false;
       notifyListeners();
       return true;
     } catch (e) {
+      isScreenBusy = false;
+      notifyListeners();
       return false;
     }
   }
@@ -78,12 +86,16 @@ class AuthViewModel extends ChangeNotifier {
     isScreenBusy = true;
     notifyListeners();
     try {
-      final newUser = await _auth.signInWithEmailAndPassword(
-          email: email, password: password);
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      setUserId(_auth.currentUser!.uid); //set currentUserId
+      SharedPreferencesUtil.setString(userIdKey, userId!);
       isScreenBusy = false;
       notifyListeners();
       return true;
     } catch (e) {
+      isScreenBusy = false;
+
+      notifyListeners();
       return false;
     }
   }
@@ -105,5 +117,13 @@ class AuthViewModel extends ChangeNotifier {
   void moveToPrevious() {
     contentIndex--;
     notifyListeners();
+  }
+
+  String? getUserId() {
+    return userId;
+  }
+
+  void setUserId(String id) {
+    userId = id;
   }
 }
