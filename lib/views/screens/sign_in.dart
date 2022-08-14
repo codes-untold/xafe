@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:xafe/constants/app_constants.dart';
+import 'package:xafe/utilities/services.dart';
 import 'package:xafe/utilities/toast.dart';
 import 'package:xafe/viewmodels/auth_view_model.dart';
 import 'package:xafe/views/widgets/custom_textfield.dart';
@@ -140,8 +141,14 @@ class _SignInScreenState extends State<SignInScreen> {
                           "/navigation_screen",
                           (Route<dynamic> route) => false);
                     } else {
-                      showToastAlert(context, "Invalid Login Details",
-                          isSuccess: false);
+                      bool noInternet = await Service.internetCheck();
+                      if (!noInternet) {
+                        showToastAlert(context, "No Internet Connection",
+                            isSuccess: false);
+                      } else {
+                        showToastAlert(context, "Invalid Login Details",
+                            isSuccess: false);
+                      }
                     }
                   }
                 }),

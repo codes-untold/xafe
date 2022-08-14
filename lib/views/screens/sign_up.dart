@@ -209,6 +209,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       authViewModel.moveToNext();
                       controller.clear();
                     } else {
+                      bool noInternet = await Service.internetCheck();
+                      if (!noInternet) {
+                        showToastAlert(context, "No Internet Connection",
+                            isSuccess: false);
+                        return;
+                      }
                       //only returns false on cases of invalid OTP
                       showToastAlert(context, "invalid OTP", isSuccess: false);
                     }

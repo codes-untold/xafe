@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:xafe/utilities/toast.dart';
 
 import '../../constants/app_constants.dart';
 import 'custom_text.dart';
@@ -34,11 +35,21 @@ class CustomBottomSheet extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          customRow("create_budget", "Create a budget"),
+          GestureDetector(
+              onTap: () {
+                showToastAlert(context, "Feature not avaliable",
+                    isSuccess: false);
+              },
+              child: customRow("create_budget", "Create a budget")),
           const SizedBox(
             height: 10,
           ),
-          customRow("add_spending", "Add an spending category"),
+          GestureDetector(
+              onTap: () {
+                showToastAlert(context, "Feature not avaliable",
+                    isSuccess: false);
+              },
+              child: customRow("add_spending", "Add an spending category")),
           const SizedBox(
             height: 10,
           ),

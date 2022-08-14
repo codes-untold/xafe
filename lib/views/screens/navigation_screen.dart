@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:xafe/constants/app_constants.dart';
@@ -40,14 +42,17 @@ class _NavigationScreenState extends State<NavigationScreen> {
         Provider.of(context, listen: false);
     AnimationViewModel animationViewModel = Provider.of(context, listen: false);
     WidgetsBinding.instance!.addPostFrameCallback((_) {
-      if (transactionViewModel.categoryList.isEmpty) {
-        transactionViewModel.fetchCategoriesExpenses().then((value) {
+      transactionViewModel.setScreenBusy();
+
+      transactionViewModel.fetchCategoriesExpenses().then((value) {
+        //slight delay to display animated loader
+        Future.delayed(const Duration(seconds: 3), () {
+          transactionViewModel.setScreenIdle();
           animationViewModel.animateExpenseText();
         });
+      });
 
-        // Add Your Code here.
-
-      }
+      // Add Your Code here.
     });
   }
 

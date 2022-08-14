@@ -1,11 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:xafe/constants/app_constants.dart';
 import 'package:xafe/models/category_model.dart';
 import 'package:xafe/models/expense_model.dart';
 import 'package:xafe/utilities/services.dart';
-import 'package:xafe/utilities/shared_preferences.dart';
 
 class TransactionViewModel extends ChangeNotifier {
   List<CategoryModel> categoryList = [];
@@ -13,7 +10,6 @@ class TransactionViewModel extends ChangeNotifier {
       FirebaseFirestore.instance.collection("appData");
 
   bool isScreenBusy = false;
-  final _auth = FirebaseAuth.instance;
 
   Future<void> fetchCategoriesExpenses() async {
     categoryList.clear();
@@ -59,6 +55,16 @@ class TransactionViewModel extends ChangeNotifier {
     } catch (e) {
       return false;
     }
+  }
+
+  setScreenBusy() {
+    isScreenBusy = true;
+    notifyListeners();
+  }
+
+  setScreenIdle() {
+    isScreenBusy = false;
+    notifyListeners();
   }
 
   Future<void> createCategory(String categoryName, String categoryImgId) async {
